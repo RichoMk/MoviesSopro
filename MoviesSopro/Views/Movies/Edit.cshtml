@@ -1,0 +1,88 @@
+﻿@model Movie.Entities.Movies
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Movies</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PublisherId" class="control-label"></label>
+                <input asp-for="PublisherId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PublisherName" class="control-label"></label>
+                <input asp-for="PublisherName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Categories" class="control-label"></label>
+                <input asp-for="Categories" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ActorNames" class="control-label"></label>
+                <input asp-for="ActorNames" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DirectorId" class="control-label"></label>
+                <input asp-for="DirectorId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DirectorName" class="control-label"></label>
+                <input asp-for="DirectorName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Language" class="control-label"></label>
+                <input asp-for="Language" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="WatchTime" class="control-label"></label>
+                <input asp-for="WatchTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryOfOrigin" class="control-label"></label>
+                <input asp-for="CountryOfOrigin" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoURL" class="control-label"></label>
+                <input asp-for="PhotoURL" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

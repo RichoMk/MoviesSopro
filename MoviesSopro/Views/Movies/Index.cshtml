@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Movie.Entities.Movies>
+
+<div class="under-header-style">
+    <h1 style="color:white;">Movies</h1>
+</div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12 text-right">
+            <a asp-action="Create" class="btn btn-success">
+                <i class="fas fa-plus-circle"></i>&nbsp; &nbsp;Create
+            </a>
+        </div>
+    </div>
+    <div class="container">
+
+        <h3>All Movies</h3>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th> Title </th>
+                    <th> Actor </th>
+                    <th> Category </th>
+                    <th> Director </th>
+                    <th> Publisher </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+               @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td> @Html.DisplayFor(model => movie.Title) </td>
+                        <td> @Html.DisplayFor(model => movie.ActorNames) </td>
+                        <td> @Html.DisplayFor(model => movie.Categories) </td>
+                        <td> @Html.DisplayFor(model => movie.DirectorName)</td>
+                        <td> @Html.DisplayFor(model => movie.PublisherName) </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-secondary btn-block">
+                                <i class="fas fa-edit"></i>&nbsp;&nbsp;Edit
+                            </a>
+                            <a asp-action="Details" asp-route-id="@movie.Id" class="btn btn-info btn-block">
+                                <i class="fas fa-info"></i>&nbsp;&nbsp;Details
+                            </a>
+                           @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                            {
+                            }
+                            <a asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i>&nbsp;&nbsp;Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

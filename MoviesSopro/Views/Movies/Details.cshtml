@@ -1,0 +1,56 @@
+﻿@model MoviesSopro.Models.MoviesViewModel
+
+@{
+    ViewData["Title"] = "Details";
+
+}
+
+<div class="container-fluid" style="background-color: rgba(17, 17, 17,
+      0.808); color: rgb(238, 235, 235);">
+    <div class="container">
+        <div>
+            <h1 class="">@Html.DisplayFor(model => model.Movie.Title)</h1>
+        </div>
+        <div>
+            <img src="~/Photos/@Model.Movie.PhotoURL" style="width: 500px; height: 450px;" />
+        </div>
+        <div>
+            <div>
+                @*<p class="">@Html.DisplayFor(model => model.Rating)</p>*@
+                @*<p class="">@Html.DisplayFor(model => model.ShortDescription)</p>*@
+                <p class=""> IMDb rating: &nbsp; @Html.DisplayFor(model => model.Movie.Rating)</p>
+                <p class="">ShortDescription: &nbsp; @Html.DisplayFor(model => model.Movie.ShortDescription)</p>
+                <p class="">Release Date: &nbsp; @Html.DisplayFor(model => model.Movie.ReleaseDate)</p>
+                <p class="">Language: &nbsp; @Html.DisplayFor(model => model.Movie.Language)</p>
+                @*<p class="">@Html.DisplayFor(model => model.Movie.ActorNames)</p>*@
+                <p class="">Categories: &nbsp;  @Html.DisplayFor(model => model.Movie.Categories)</p>
+                <p class="">Director: &nbsp;  @Html.DisplayFor(model => model.Movie.DirectorName)</p>
+                <div class="row">
+                    @foreach (var actors in Model.AllActorsInMovie)
+                    {
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div>
+                                <h1>@Html.DisplayFor(item => actors.Name)</h1>
+                            </div>
+                            <div style="width:300px; height:300px;">
+                                @if (Uri.IsWellFormedUriString(actors.PhotoURL, UriKind.Absolute))
+                                {
+                                    <a asp-controller="Actor" asp-action="Details" asp-route-id="@actors.Id">
+                                        <div> <img src="@actors.PhotoURL" class="actor-img-style" /> </div>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Actor" asp-action="Details" asp-route-id="@actors.Id">
+                                        <div> <img src="~/ActorPhotos/@actors.PhotoURL" class="actor-img-style" /> </div>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

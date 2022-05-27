@@ -1,0 +1,28 @@
+﻿@model Movie.Entities.Actor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container-fluid" style="background-color: rgba(17, 17, 17,
+      0.808); color: rgb(238, 235, 235);">
+    <div>
+        <div style="display:flex; align-content: center; justify-content: center;">
+            @if (Uri.IsWellFormedUriString(Model.PhotoURL, UriKind.Absolute))
+            {
+                <img src="@Model.PhotoURL" style="width: 450px; height: 350px; border-radius: 50%;" />
+            }
+            else
+            {
+                <img src="~/ActorPhotos/@Model.PhotoURL" style="width: 450px; height: 350px; border-radius: 50%;" />
+            }
+        </div>
+        <div>
+            <h3 class="mt-3"> Date of Birth: &nbsp; @Model.DateBirth </h3>
+            <h3 class="mt-3"> Born: &nbsp; @Model.Country </h3>
+            <h3 class="mt-3"> Short Description: &nbsp; @Model.ShortDescription </h3>
+            <h3 class="mt-3"> Language: &nbsp; @Model.Language </h3>
+        </div>
+    </div>
+</div>
+

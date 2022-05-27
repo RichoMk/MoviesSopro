@@ -1,0 +1,116 @@
+﻿@*@model Movie.Entities.Movies*@
+@model MoviesSopro.Models.MoviesViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="ml-3">
+    <h1>Create</h1>
+
+    <h4>Movies</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Select Multiple Categories</label>
+                        @Html.DropDownList("CategoryIds", (MultiSelectList)ViewBag.CategoriesList, htmlAttributes: new { multiple = "multiple", @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PublisherId" class="control-label"></label>
+                    <select asp-for="PublisherId" class="form-control" asp-items="ViewBag.PublishersList"></select>
+                    @*@Html.DropDownListFor(x => Model.PublisherId, new SelectList(ViewBag.PublishersList, "Value", "Text"),
+            htmlAttributes: new { @class = "form-control", id = "Publisher" })*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="PublisherName" hidden class="control-label"></label>
+                    <input asp-for="PublisherName" hidden class="form-control" />
+                    @*@Html.DropDownListFor(x => Model.PublisherId, new SelectList(ViewBag.PublishersList, "Value", "Text"),
+            htmlAttributes: new { @class = "form-control", id = "Publisher" })*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DirectorId" class="control-label"></label>
+                    <select asp-for="DirectorId" class="form-control" asp-items="ViewBag.DirectorsList"></select>
+                    @*@Html.DropDownListFor(x => Model.DirectorId, new SelectList(ViewBag.DirectorsList, "Value", "Text"),
+            htmlAttributes: new { @class = "form-control", id = "Director" })*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DirectorName" hidden class="control-label"></label>
+                    <input asp-for="DirectorName" hidden class="form-control" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Select Multiple Actors</label>
+                        @Html.DropDownList("ActorIds", (MultiSelectList)ViewBag.ActorList, htmlAttributes: new { multiple = "multiple", @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Language" class="control-label"></label>
+                    <input asp-for="Language" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="WatchTime" class="control-label"></label>
+                    <input asp-for="WatchTime" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ReleaseDate" class="control-label"></label>
+                    <input asp-for="ReleaseDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CountryOfOrigin" class="control-label"></label>
+                    <input asp-for="CountryOfOrigin" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label"></label>
+                    <input asp-for="Rating" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShortDescription" class="control-label"></label>
+                    <input asp-for="ShortDescription" class="form-control" />
+                </div>
+                <div class="form-group">
+                    @*<label asp-for="TrailerURL" class="control-label"></label>*@
+                    <input asp-for="TrailerURL" hidden class="form-control" />
+                </div>
+                <div class="form-group">
+                    @*<label asp-for="TrailerURL" class="control-label"></label>*@
+                    <input asp-for="PhotoURL" hidden class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+            <div class="row form-group">
+                <div class="col-12">
+                    <label>Upload Photo</label>
+                    <div class="col-12">
+                        <input type="file" #file accept="Image/*" id="PhotoUpload" />
+                        <button class="btn btn-custom-upload btn-block mt-1" id="uploadPhoto">Upload Photo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/Movie/movie.js"></script>
+}
